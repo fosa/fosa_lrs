@@ -29,7 +29,7 @@ Der Einheitssprung wird in der Technik oft gebraucht und ist folgendermassen def
 \[
 	\sigma := \left\lbrace 
 		\begin{matrix}
-			1 \qquad \text{für alle } t \ge 0.\\
+			1 \qquad \text{für alle } t \ge 0\\
 			0 \qquad \text{für alle } t < 0.
 		\end{matrix} \right.
 \]
@@ -61,3 +61,39 @@ Eine Funktion, die bis auf endliche Sprung- und Knickstellen überall differenzi
 
 
 \subsection{Operationen}
+\subsubsection{Vertärkung / Amplifizierung}
+Multiplikation mit einer Konstanten:
+\[
+	u(t) \rightarrow A \cdot u(t)
+\]
+
+\subsubsection{Überlagerung}
+Addition zweier Signale:
+\[
+	(u_1(t),u_2(t)) \rightarrow a_1(t) + u_2(t)
+\]
+
+\subsubsection{Zeitliche Verschiebung}
+Ein Signal wird um die Zeit $t_0$ verzögert, indem $t$ durch $t-t_0$ ersetzt wird:
+\[
+	u(t) \rightarrow u(t-t_0)
+\]
+
+\subsubsection{Zeitliche Reskalierung}
+Ein Signal wird um den Faktor $\alpha$ zeitlich reskaliert (verlangsamt, gestreckt), indem $t$ durch $t/\alpha$ ersetzt wird:
+\[
+	u(t) \rightarrow u \left( \frac{t}{\alpha} \right)
+\]
+
+\subsubsection{Allgemein gilt}
+Jedes sprungstetige Signal $u(t)$ lässt sich mit Hilfe von verschobenen Einheitssprüngen in folgender Form schreiben:
+\[
+	u(t) = u_s(t) + A_0 \cdot \sigma(t-t_0) + A_1 \cdot \sigma(t-t_1)+ ...
+\]
+\\
+Dabei sind:
+\begin{itemize}
+	\item $u_s(t)$ ein stetiges Signal (ohne Sprünge, aber evtl. Knickstellen),
+	\item die Zeiten $t_0,t_1,...$ die Sprungstellen von $u(t)$,
+	\item die Zahlen $A_0,A_1,...$ die Sprunghöhen zu den Zeiten $t_0,t_1,...$.
+\end{itemize}

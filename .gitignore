@@ -7,4 +7,4 @@
 *.gz
 *.swp
 *.gnuplot
-
+*eps-converted*.pdf
