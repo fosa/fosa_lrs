@@ -1,0 +1,257 @@
+%coding:utf-8
+
+%----------------------------------------
+%FOSAPHY, a LaTeX-Code for a summary of linear systems and regulation
+%Copyright (C) 2014, Mario Felder, Michael Fallegger
+
+%This program is free software; you can redistribute it and/or
+%modify it under the terms of the GNU General Public License
+%as published by the Free Software Foundation; either version 2
+%of the License, or (at your option) any later version.
+
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%----------------------------------------
+
+\chapter{Laplace Transformation}
+\section{Definition}
+Definition der Laplace-Transformierten $U(s)$ eines Signals $u(t)$:
+\[
+	 \lap\{u(t)\} = \int_{0^-}^{\infty} u(t) \cdot \e^{-st} \di t = \lim\limits_{a \nearrow 0} \int_{a}^{\infty}  u(t) \cdot \e^{-st} \di t
+\]
+\\
+Notation:
+\[
+	u(t) \ \laplace \ U(s) \qquad ,s \in \mathbb{C}
+\]
+
+\subsection{Konvergenzbereich}
+Die Laplace-Transformierte eines Signals existiert nicht für jedes $s$.
+Falls das Integral
+\[
+	U(s) = \int_{0}^{\infty} u(t) \cdot \e^{-st} \di t
+\]
+konvergiert, so existiert die Laplace-Transformierte von $u(t)$.\\
+Der Bereich aller Zahlen $s$, für welche die Laplace-Transformierte eines Signals konvergiert, den Konvergenzbereich (KB).
+\[
+	s = \sigma + \omega \cdot \im \qquad , \sigma = Re(s) \text{ und } \omega = Im(s)
+\]
+Somit ist der Konvergenzbereich:
+\[
+	KB = \{ s \in \mathbb{C} | Re(s) > \sigma_0 \}
+\]
+\\\\
+
+
+\section{Eigenschaften der Laplace-Transformation}
+\paragraph{Linearitätssatz}
+\[
+	A \cdot u(t) + B \cdot v(t) \ \laplace\ A \cdot U(s) + B \cdot V(s) 
+\]
+
+\paragraph{Ähnlichkeitssatz}
+\[
+	u(a \cdot t)\ \laplace \ \frac{1}{a} \cdot U\left(\frac{s}{a}\right) \qquad ,a>0
+\]
+
+\paragraph{Dämpfungssatz}
+\[
+	\e^{-a\cdot t}u(t) \ \laplace \ U(s + a) \qquad ,a>0	
+\]
+
+\paragraph{Zeitverschiebungssatz}
+\[
+	t(t-t_0) \cdot \sigma (t-t_0) \ \laplace \ \e^{-t_0 \cdot s} \cdot U(s)	\qquad ,t_0 \geq 0
+\]
+
+\paragraph{Faltungssatz}
+\[
+	u(t) \ast v(t) \ \laplace \ U(s) \cdot V(s)
+\]
+
+\paragraph{Differentiationssatz}
+\[
+	\dot{u}(t) \ \laplace \ s \cdot U(s) - u(0^-)
+\]
+
+\[
+	\dddot{u}(t) \ \laplace \ s^3 \cdot U(s) - s^2 \cdot u(0^-) - s \cdot \dot{u}(0^-) - \ddot{u}(0^-)
+\]
+\\
+Mit Anfangsbedingung $0^- = 0$:
+\[
+	\difrac{^n}{t^n}u(t) \ \laplace \ s^n \cdot U(s)
+\]
+
+\paragraph{Integrationssatz}
+\[
+	\int_{0^-}^{t} \di t \ \laplace \ \frac{1}{s}\cdot U(s)
+\]
+\\
+
+\paragraph{Inverse Laplace-Transformation}
+\[
+	\lap^{-1}\{U(s)\} = u(t)
+\]
+\[
+	U(s) \ \Laplace \ u(t)
+\]
+\\Eindeutigkeitssatz:
+\[
+	U(s) = V(s) \ \Laplace \ u(t) = v(t) \qquad , \text{für }t>0
+\]
+\\\\
+
+\section{Partialbruchzerlegung}
+Rationale Funktion:
+\[
+	R(s) = \frac{Z(s)}{N(s)}
+\]
+\\
+Wobei $Z(s)$, und $N(s)$ Polynome in $s$ sind.\\
+\\
+In Linearfaktoren zerlegen:
+\[
+	R(s) = \frac{Z(s)}{(s-s_1)(s-s_2)\ldots(s-s_m)}
+\]
+Wobei $s_1,\ldots ,s_m$ komplexe Polstellen von $R(s)$ sind.
+
+\subsection{Rationale Funktionen mit einfache Polen}
+\[
+	R(s) = \frac{Z(s)}{(s-s_1)(s-s_2)\ldots(s-s_m)} \qquad , s_1,\ldots ,s_m \text{ paarweise verschieden}
+\]
+\\
+Es gibt komplexe Zahlen $a_1,\ldots ,a_m$, so dass
+\[
+	R(s)=\frac{a_1}{s-s_1}+\frac{a_2}{s-s_2}+\cdots+\frac{a_m}{s-s_m}
+\]
+\\
+Bestimmung der komplexen Zahlen $a_i$:
+\[
+	a_i=\left.R(s)\cdot(s-s_1)\right|_{s=s_i}
+\]
+\\
+
+\subsection{Rationale Funktionen mit mehrfachen Polen}
+\[
+	R(s) = \frac{Z(s)}{(s-a)^,} \qquad a \in \mathbb{C}
+\]
+\\
+Es gibt komplexe Zahlen $a_1,\ldots ,a_m$, so dass
+\[
+	R(s)=\frac{a_1}{s-a}+\frac{a_2}{(s-a)^1}+\cdots+\frac{a_m}{(s-a)^m}
+\]
+\\
+Bestimmung der komplexen Zahlen $a_i$:
+\[
+	a_{m-i} = \frac{1}{i!}\left[\difrac{^i}{s^i}R(s)(s-a)^a\right]_{s=a} \qquad i=0,\ldots,m-1
+\]
+\\\\
+
+\section{Lösen von Differentialgleichungen}
+\begin{enumerate}
+	\item Differentialgleichung in Bildbereich überführen $\rightarrow$ algebraische Gleichung
+	\item algebraische Gleichung im Bildraum nach der unbekannten Funktion auflösen
+	\item Bildfunktion des Eingangssignals bestimmen und in die algebraische Gleichung einsetzen
+	\item Lösung aus dem Bildraum in den Zeitraum zurück transformieren
+\end{enumerate}
+
+\section{Übertragungsgleichung LZI-Systemen}
+Der Zusammenhang zwischen Eingangssignal $u(t)$ und Ausgangssignal $v(t)$ ist durch eine lineare Differentialgleichung mit konstanten Koeffizienten beschrieben
+\[
+	a_n\cdot v^{(n)} + a_{n-1} \cdot v^{(n-1)} + \ldots + a_1 \cdot \dot{v} +a_0\cdot v = b_m\cdot u^{(n)} + b_{n-1} \cdot u^{(n-1)} + \ldots + b_0 \cdot u 
+\]
+\\
+Da nur kausale Signale betrachtet werden, entfallen die Anfangsbedingungen:
+\[
+	a_ns^nV+a_{n-1}s^{n-1}V+\ldots+a_1sV+a_0V=b_ms^mU+b_{m-1}s^{m-1}U+\ldots+b_0U
+\]
+Nach $V(s)$ aufgelöst ergibt dies:
+\[
+	V(s)=\underbrace{\frac{b_ms^m + b_{m-1}s^{m-1}+\ldots+b_1s + b_0}{a_ns^n + a_{n-1}s^{n-1}+\ldots+a_1s + a_0}}_{G(s)} \cdot U(s)
+\]
+\\
+Die rationale Funktion $G(s)$ wird Übertragungsfunktion des Systems genannt. Daraus ergibt sich die Übertragungsgleichung:
+\[
+	V(s) = G(s) \cdot U(s)
+\]
+\\\\
+
+\section{Faltung}
+Die Faltung ist definiert durch:
+\[
+	(f \ast g)(t) = \int_{-\infty}^{\infty}f(\tau) \cdot g(t-\tau) \di \tau
+\]
+\\
+Die Faltung in den Bildbereich transformiert:
+\[
+	(f \ast g)(t) \ \laplace \ F(s) \cdot G(s)
+\]
+
+\paragraph{Rechenregeln}
+\begin{enumerate}
+	\item Dirac-Delta ist das neutrale Element bzgl. der Faltung: $\delta(t-t_0) \ast g(t) = g(t-t_0)$
+	\item Kommutativität: $f\ast g = g \ast f$
+	\item Assoziativität: $f \ast (g \ast h) = (f \ast g) \ast h$
+	\item Distributivität: $f \ast (g + h) = f \ast g + f \ast h$
+\end{enumerate}
+
+\subsection{Gewichtsfunktion}
+Aus dem Faltungssatz ergibt sich:
+\[
+	v(t) = g(t) \ast u(t) \qquad , g(t) \ \laplace \ G(s)
+\]
+\\
+$g(t)$ wird Gewichtsfunktion genannt.
+\\
+
+\subsection{Impulsantwort}
+Die Impulsantwort ist definiert als die Antwort auf einen Einheitsimpuls $u(t) = \delta(t)$ zur Zeit $t=0$.
+\[
+	v(t) = g(t) \ast u(t) = g(t) \ast \delta(t) = g(t)
+\]
+\\
+Die Impulsantwort ist die Gewichtsfunktion.
+\\
+
+\subsection{Sprungantwort}
+Als Sprungantwort $h(t)$ bezeichnet man die Antwort des Systems auf einen Einheitssprung $\sigma(t)$:
+\[
+	h(t) = g(t) \ast \sigma(t) = \lap^{-1}\left\lbrace G(s) \cdot \frac{1}{s} \right\rbrace = \int_{0^-}^{t} g(\tau) \di \tau
+\]
+\\
+
+\subsection{Anfangswertsatz}
+In gewissen Situationen ist das Verhalten des Systems kurz nach dem Einschalten interessant:
+\[
+	v(0^+) = \lim\limits_{t \searrow 0}v(t)
+\]
+\\
+Dies kann direkt im Bildraum berechnet werden. Ist $v(t)$ ein in $t=0$ sprungstetiges Signal, so existiert der Anfangswert und es gilt:
+\[
+	v(0^+) = \lim\limits_{Re(s)\rightarrow + \infty} s\cdot V(s)
+\]
+
+\subsection{Endwertsatz}
+Ist der Endwert $v(\infty)$ eines Signals $v(t)$ gefragt:
+\[
+	v(\infty) = \lim\limits_{t \rightarrow \infty} v(t)
+\]
+, gilt der folgende Satz:\\
+Ist $v(t)$ ein Signal, für welches der Endwert $v(\infty)$ existiert, so gilt:
+\[
+	v(\infty) = \lim\limits_{s \rightarrow 0} s \cdot V(s)
+\]
+\\
+Der Endwert existiert, wenn alle Pole der Bildfunktion $V(s)$ links der imaginären Achse ($Re(s)<0$) sind. Ausnahme ist eine einfache Polstelle bei $s=0$.
+\\
+
+\subsection{Stabilität}
+Ein System ist symptotisch stabil, falls seine Impulsantwort $g(t)$ mit $t \rightarrow \infty$ gegen Null abklingt:
+\[
+	g(\infty) = 0
+\]
+\\
+Diese Eigenschaft ist äquivalent dazu, dass alle Polstellen der Übertragungsfunktion $G(s)$ links der imaginären Achse liegen.
