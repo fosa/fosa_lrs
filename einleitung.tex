@@ -53,3 +53,43 @@ Signale sind rückwirkungsfrei, also eingeprägte Grössen.
 \hline 13 & $y(t) = t \cdot \cos^2 t \cdot x(t)$ & \textbf{single input / single output} \\ 
 	   14 & $\left[ \begin{matrix} y_1(t) \\ y_2(t) \end{matrix}\right] = \left[ \begin{matrix} -3 & \sin(t) \\ t & -1\end{matrix}\right] \cdot \left[ \begin{matrix} x_1(t)\\ x_2(t) \end{matrix}\right]$ & multiple input / multiple output \\ 
 \end{tabular} 
+\\\\
+
+\section{Linearisierung}
+Approximation durch Gerade:
+\[
+	f(x_0+\Delta x) \approx \left.(x_0)+\difrac{f}{x}\right|_{x_0}\cdot \Delta x
+\]
+
+\subsection{Arbeitspunkt festlegen}
+
+Im stationären Zustand gilt:
+\[
+	\difrac{^n}{t^n} = 0
+\]
+
+Für das Eingangssignal $u(t)$ und das Ausgangssignal $h(t)$:
+\[
+	h(t) = h_0 + \Delta h(t) \qquad ,\ u(t) = u_0 + \Delta u(t)
+\]
+
+
+\subsection{Linearisierung um Arbeitspunkt}
+Es gilt:
+\[
+	f(h^{(n)}, h^{(n-1)}, \dots ,h^{'} ,h, u^{(m)}, u^{(m-1)}, \dots ,u^{'} ,u)= 0
+\]
+$f$ kann am Punkt $h_0, u_0$ approximiert werden durch:
+\begin{small}
+\[
+	\left.\pdifrac{f}{h^{(n)}}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta h^{n} + \dots +
+	\left.\pdifrac{f}{h'}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta h' +
+	\left.\pdifrac{f}{h}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta h +
+	\left.\pdifrac{f}{u^{(n)}}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta u^{n} + \dots +
+	\left.\pdifrac{f}{u}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta u = 0
+\]
+\end{small}
+
+\begin{center}
+	\includegraphics[scale = 0.8]{images/linearisierung.eps}
+\end{center}
