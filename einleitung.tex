@@ -58,7 +58,7 @@ Signale sind rückwirkungsfrei, also eingeprägte Grössen.
 \section{Linearisierung}
 Approximation durch Gerade:
 \[
-	f(x_0+\Delta x) \approx \left.(x_0)+\difrac{f}{x}\right|_{x_0}\cdot \Delta x
+	f(\bar{x}+\Delta x) \approx \left.(\bar{x})+\difrac{f}{x}\right|_{\bar{x}}\cdot \Delta x
 \]
 
 \subsection{Arbeitspunkt festlegen}
@@ -68,25 +68,25 @@ Im stationären Zustand gilt:
 	\difrac{^n}{t^n} = 0
 \]
 
-Für das Eingangssignal $u(t)$ und das Ausgangssignal $h(t)$:
+Für das Eingangssignal $u(t)$ und das Ausgangssignal $y(t)$:
 \[
-	h(t) = h_0 + \Delta h(t) \qquad ,\ u(t) = u_0 + \Delta u(t)
+	h(t) = \bar{y} + \Delta y(t) \qquad ,\ u(t) = \bar{u} + \Delta u(t)
 \]
 
 
 \subsection{Linearisierung um Arbeitspunkt}
 Es gilt:
 \[
-	f(h^{(n)}, h^{(n-1)}, \dots ,h^{'} ,h, u^{(m)}, u^{(m-1)}, \dots ,u^{'} ,u)= 0
+	D(y^{(n)}, y^{(n-1)}, \dots ,\dot{y} ,y, u^{(m)}, u^{(m-1)}, \dots , \dot{u} ,u)= 0
 \]
-$f$ kann am Punkt $h_0, u_0$ approximiert werden durch:
+$D$ kann am Punkt $\bar{y}, \bar{u}$ approximiert werden durch:
 \begin{small}
 \[
-	\left.\pdifrac{f}{h^{(n)}}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta h^{n} + \dots +
-	\left.\pdifrac{f}{h'}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta h' +
-	\left.\pdifrac{f}{h}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta h +
-	\left.\pdifrac{f}{u^{(n)}}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta u^{n} + \dots +
-	\left.\pdifrac{f}{u}\right|_{\begin{scriptsize}\begin{matrix} h_0 \\ u_0 \end{matrix}\end{scriptsize}} \cdot \Delta u = 0
+	\left.\pdifrac{D}{y^{(n)}}\right|_{\begin{scriptsize}\begin{matrix} \bar{y} \\ \bar{u} \end{matrix}\end{scriptsize}} \cdot \Delta y^{n} + \dots +
+	\left.\pdifrac{D}{\dot{y}}\right|_{\begin{scriptsize}\begin{matrix} \bar{y} \\ \bar{u} \end{matrix}\end{scriptsize}} \cdot \Delta \dot{y} +
+	\left.\pdifrac{D}{y}\right|_{\begin{scriptsize}\begin{matrix} \bar{y} \\ \bar{u} \end{matrix}\end{scriptsize}} \cdot \Delta y +
+	\left.\pdifrac{D}{u^{(n)}}\right|_{\begin{scriptsize}\begin{matrix} \bar{y} \\ \bar{u} \end{matrix}\end{scriptsize}} \cdot \Delta u^{n} + \dots +
+	\left.\pdifrac{D}{u}\right|_{\begin{scriptsize}\begin{matrix} \bar{y} \\ \bar{u} \end{matrix}\end{scriptsize}} \cdot \Delta u = 0
 \]
 \end{small}
 
