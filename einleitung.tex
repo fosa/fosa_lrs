@@ -15,7 +15,7 @@
 %GNU General Public License for more details.
 %----------------------------------------
 
-\chapter{Einleitung}
+\chapter{Regelungstechnik}
 
 \section{Regelkreis}
 \includegraphics[width = \linewidth]{images/regelkreis.eps}
@@ -93,3 +93,25 @@ $D$ kann am Punkt $\bar{y}, \bar{u}$ approximiert werden durch:
 \begin{center}
 	\includegraphics[scale = 0.8]{images/linearisierung.eps}
 \end{center}
+
+
+\section{Kompositionen von Grundelementen}
+
+Betrachten der Verkettung:
+\begin{center}
+\includegraphics[scale = 1]{images/komp_grnd.eps}
+\end{center}
+Allgemeine Übertragungsfunktion:
+\[
+	G(s) = k \frac{s^n \cdot (1+sT_1)^n \ldots}{s^m \cdot (1+sT_2)^m(1+2dTs+s^2T^2)\ldots} \cdot \e^{-sT}
+\]
+
+\begin{tabular}{>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2.5cm}}
+	   \rule[-2ex]{0pt}{5.5ex} Anteil  & Bode  & Ortskurve  & Sprungantwort  \\ 
+\hline \rule[-2ex]{0pt}{5.5ex} $k$  & \includegraphics[scale = 0.3]{images/bode_k.eps} & \includegraphics[scale = 0.4]{images/ort_k.eps} & \includegraphics[scale = 0.5]{images/spr_k.eps} \\ 
+\hline \rule[-2ex]{0pt}{5.5ex} $s^n$ & \includegraphics[scale = 0.3]{images/bode_sn.eps} & \includegraphics[scale = 0.4]{images/ort_sn.eps}  & \includegraphics[scale = 0.5]{images/spr_sn.eps}  \\ 
+\hline \rule[-2ex]{0pt}{5.5ex} $\frac{1}{s^m}$ & \includegraphics[scale = 0.3]{images/bode_sm.eps}  & \includegraphics[scale = 0.4]{images/ort_sm.eps}  & \includegraphics[scale = 0.5]{images/spr_sm.eps} \\ 
+\hline \rule[-2ex]{0pt}{5.5ex} $(1+sT)^n$ & \includegraphics[scale = 0.3]{images/bode_1stn.eps} & \includegraphics[scale = 0.4]{images/ort_1stn.eps}  & \includegraphics[scale = 0.5]{images/spr_1stn.eps} \\ 
+\hline \rule[-2ex]{0pt}{5.5ex} $\frac{1}{(1+sT)^m}$ & \includegraphics[scale = 0.3]{images/bode_1stm.eps} & \includegraphics[scale = 0.4]{images/ort_1stm.eps} & \includegraphics[scale = 0.5]{images/spr_1stm.eps} \\ 
+\hline \rule[-2ex]{0pt}{5.5ex} $\e^{-sT}$ & \includegraphics[scale = 0.3]{images/bode_est.eps} & \includegraphics[scale = 0.4]{images/ort_est.eps} & \includegraphics[scale = 0.5]{images/spr_est.eps} \\ 
+\end{tabular} 
