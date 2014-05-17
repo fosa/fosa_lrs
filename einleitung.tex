@@ -94,6 +94,46 @@ $D$ kann am Punkt $\bar{y}, \bar{u}$ approximiert werden durch:
 	\includegraphics[scale = 0.8]{images/linearisierung.eps}
 \end{center}
 
+\section{Stabilität}
+Grundlegendes Stabilitätskriterium für LZI-Glieder:\\
+\begin{center}
+\fbox{\parbox{.9\linewidth}{
+	Ein LZI-Glied ist genau dann stabil, wenn die $n$ Nullstellen des Nennerpolynoms sämtliche negative Realteile haben. In der komplexen $s$-Ebene müssen die Nullstellen sämtlich links von der imaginären Achse liegen.
+}}
+\end{center}
+
+\subsection{Hurwitz-Kriterium}
+Das Polynom $N(s) = a_0 + a_1s + a_2s^2 + a_ns^n = 0$ ist nur dann stabil, 
+wenn alle Koeffizienten $a_0, a_1, a_2, \ldots a_2$ \uline{ungleich null} sind und
+ein \uline{positives Vorzeichen} haben. Zusätzlich müssen alle $n$ \uline{Linieardeterminanten positiv} sein (mit $n$ Zeilen und $n$ Spalten).  
+\[
+	D_n = \begin{vmatrix}
+	a_1 & a_3 & a_5 & a_7 & \ldots \\ 
+	a_0 & a_2 & a_4 & a_6 & \ldots \\ 
+	0 & a_1 & a_3 & a_5 & \ldots \\ 
+	0 & a_0 & a_2 & a_4 & \ldots \\ 
+	0 & 0 & a_1 & a_3 & \ldots \\ 
+	0 & 0 & a_0 & a_2 & \ldots \\
+	\ldots
+	\end{vmatrix} 
+\]\\
+Mit den jeweiligen Unterdeterminanten (für den fall $n=3$):\\
+\[\begin{aligned}
+	D_1 &= \begin{vmatrix}
+		a_1 
+		\end{vmatrix} = a_1 > 0\\
+	D_2 &= \begin{vmatrix}
+		a_1 & a_3 \\
+		a_0 & a_2
+	\end{vmatrix} = a_1a_2 - a_3a_0 > 0\\
+	D_3 &= \begin{vmatrix}
+		a_1 & a_3 & 0\\
+		a_0 & a_2 & 0\\
+		0	& a_1 & a_3
+	\end{vmatrix} = a_3 D_2 > 0
+\end{aligned}\]\\
+Die letzte Determinante erfüllt jeweils zwangsmässig die Bedingung.
+
 
 \section{Kompositionen von Grundelementen}
 
