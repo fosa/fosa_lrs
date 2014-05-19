@@ -148,7 +148,32 @@ Das Nyquist-Kriterium betrachtet die Ortskurve gegenüber dem Punkt $-1$ auf der
 	\includegraphics[scale=0.7]{images/nyquist.eps}
 \end{center}
 
+\section{Amplituden- und Phasenreserve}
+Die Amplitudenreserve $A_R$ ist ein Mass für den Abstand der Ortskurve $G_O(\im\omega)$ vom Punkt $-1$ in Richtung der reelen Achse. Die Kreisfrequenz an der Stelle, an der $G_O(\im\omega)$ die reelle Achse schneidet, heisst Phasenschnittkreisfrequenz $\omega_\pi$.\\
+Definition Amplitudenreserve:
+\[
+	A_R = \frac{1}{\left|G_O(\im\omega)\right|} \qquad \text{Stabilitätsbedingung: } A_R > 0.
+\]\\\\
+Die Phasenfrequenz $\varphi_R$ ist der Winkel zwischen der negativ-reellen Achse und dem Punkt, an dem die Ortskurve  $G_O(\im\omega)$ den Einheitskresi schneidet. Die Kreisfrequenz im Schnittpunkt heisst Durchtrittskresifrequenz $\omega_D$.\\
+Definition Phasenreserve:
+\[
+	\varphi_R = \angle{G_O(\im\omega)}} + \pi \qquad \text{Stabilitätsbedingung: } \varphi > 0.
+\]\\\\
+Ablesen von der Ortskurve:
+\begin{center}
+	\includegraphics[scale=0.7]{images/ort_reserve.eps}
+\end{center}
+Ablesen vom Bodediagramm:
+\begin{center}
+	\includegraphics[scale=0.9]{images/bode_reserve.eps}
+\end{center}
 
+\subsection{Totzeitreserve}
+Die Totzeitreserve $T_{tR}$ ist eine zusätzliche Totzeit, die in einem Regelkreis auftreten darf, ohne dass der Regelkreis instabil wird.\\
+Definition Todzeitreserve:
+\[
+	T_{tR} = \frac{\varphi_R}{\omega_D}
+\]
 \section{Kompositionen von Grundelementen}
 
 Betrachten der Verkettung:
