@@ -26,7 +26,21 @@ Merkmale:
 	\item Vergleich von Führungs- und Regelgrösse
 	\item Angleichen der Regelgrösse an die Führungsgrösse in Wirkungskreis
 \end{itemize}
-
+~\\
+Führungsübertragungsverhalten:
+\[
+	G(s) = \frac{G_R \cdot G_S}{1 + G_R \cdot G_S}
+\]
+~\\
+Störübertragungsverhalten (Störung zwischen Regler und Strecke):
+\[
+	G_{z1}(s) =\frac{G_S}{1 + G_R \cdot G_S}
+\]
+~\\
+Störübertragungsverhalten (Störung nach Strecke):
+\[
+	G_{z2}(s) = \frac{1}{1 + G_R \cdot G_S}
+\]
 
 \section{Systeme}
 \includegraphics[width = \linewidth]{images/systeme.eps}
@@ -36,6 +50,8 @@ Signale sind rückwirkungsfrei, also eingeprägte Grössen.
 \begin{center}
 	\includegraphics[scale = 0.5]{images/system_bsp.eps}
 \end{center}
+\newpage
+
 \begin{tabular}{c|l|l}
  Nr. & Bsp & Klassifikation \\ 
 \hline 1 & $y(t) = \cos t \cdot x(t)$ & statisch \\ 
@@ -50,8 +66,8 @@ Signale sind rückwirkungsfrei, also eingeprägte Grössen.
 	   10 & $\difrac{y(t)}{t} = -y^2(t) +x(t)$ & nicht linear \\ 
 \hline 11 & $\difrac{y(t)}{t} = -y(t) +x(t)$ & \textbf{endlich-dimensional} \\ 
 	   12 & $\pdifrac{y(t)}{t} = - \pdifrac{}{x}y(x,t)+x(t)$ & unendlich-dimensional \\ 
-\hline 13 & $y(t) = t \cdot \cos^2 t \cdot x(t)$ & \textbf{single input / single output} \\ 
-	   14 & $\left[ \begin{matrix} y_1(t) \\ y_2(t) \end{matrix}\right] = \left[ \begin{matrix} -3 & \sin(t) \\ t & -1\end{matrix}\right] \cdot \left[ \begin{matrix} x_1(t)\\ x_2(t) \end{matrix}\right]$ & multiple input / multiple output \\ 
+\hline 13 & $y(t) = t \cdot \cos^2 t \cdot x(t)$ & \textbf{single input/output} \\ 
+	   14 & $\left[ \begin{matrix} y_1(t) \\ y_2(t) \end{matrix}\right] = \left[ \begin{matrix} -3 & \sin(t) \\ t & -1\end{matrix}\right] \cdot \left[ \begin{matrix} x_1(t)\\ x_2(t) \end{matrix}\right]$ & multiple input/output \\ 
 \end{tabular} 
 \\\\
 
@@ -67,7 +83,7 @@ Im stationären Zustand gilt:
 \[
 	\difrac{^n}{t^n} = 0
 \]
-
+~\\
 Für das Eingangssignal $u(t)$ und das Ausgangssignal $y(t)$:
 \[
 	h(t) = \bar{y} + \Delta y(t) \qquad ,\ u(t) = \bar{u} + \Delta u(t)
@@ -79,6 +95,7 @@ Es gilt:
 \[
 	D(y^{(n)}, y^{(n-1)}, \dots ,\dot{y} ,y, u^{(m)}, u^{(m-1)}, \dots , \dot{u} ,u)= 0
 \]
+~\\
 $D$ kann am Punkt $\bar{y}, \bar{u}$ approximiert werden durch:
 \begin{small}
 \[
@@ -135,6 +152,7 @@ Mit den jeweiligen Unterdeterminanten (für den fall $n=3$):\\
 Die letzte Determinante erfüllt jeweils zwangsmässig die Bedingung.
 
 \subsection{Nyquist-Kriterium}
+Das Stabilitätskriterium nach Nyquist beurteil die Stabilität eines Regelkreises aus dem Velrauf des \textbf{Frequenzgangs des offenen Regelkreises}.
 Das Nyquist-Kriterium betrachtet die Ortskurve gegenüber dem Punkt $-1$ auf der reelen Achse. Dabei wird die Winkeländerung von $\omega = 0 \rightarrow \omega = \infty$ betrachtet. Dabei muss folgende Beziehung erfüllt sein, damit das Regelsystem stabil ist:
 \[
 	\Delta \varphi = i_k \cdot \frac{\pi}{2} + r_k \cdot \pi
@@ -157,7 +175,7 @@ Definition Amplitudenreserve:
 Die Phasenfrequenz $\varphi_R$ ist der Winkel zwischen der negativ-reellen Achse und dem Punkt, an dem die Ortskurve  $G_O(\im\omega)$ den Einheitskresi schneidet. Die Kreisfrequenz im Schnittpunkt heisst Durchtrittskresifrequenz $\omega_D$.\\
 Definition Phasenreserve:
 \[
-	\varphi_R = \angle{G_O(\im\omega)}} + \pi \qquad \text{Stabilitätsbedingung: } \varphi > 0.
+	\varphi_R = \angle{G_O(\im\omega)} + \pi \qquad \text{Stabilitätsbedingung: } \varphi > 0.
 \]\\\\
 Ablesen von der Ortskurve:
 \begin{center}
@@ -184,6 +202,7 @@ Allgemeine Übertragungsfunktion:
 \[
 	G(s) = k \frac{s^n \cdot (1+sT_1)^n \ldots}{s^m \cdot (1+sT_2)^m(1+2dTs+s^2T^2)\ldots} \cdot \e^{-sT}
 \]
+\newpage
 
 \begin{tabular}{>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{2.5cm}|>{\centering\arraybackslash}p{2cm}|>{\centering\arraybackslash}p{2.5cm}}
 	   \rule[-2ex]{0pt}{5.5ex} Anteil  & Bode  & Ortskurve  & Sprungantwort  \\ 
@@ -194,3 +213,522 @@ Allgemeine Übertragungsfunktion:
 \hline \rule[-2ex]{0pt}{5.5ex} $\frac{1}{(1+sT)^m}$ & \includegraphics[scale = 0.3]{images/bode_1stm.eps} & \includegraphics[scale = 0.4]{images/ort_1stm.eps} & \includegraphics[scale = 0.5]{images/spr_1stm.eps} \\ 
 \hline \rule[-2ex]{0pt}{5.5ex} $\e^{-sT}$ & \includegraphics[scale = 0.3]{images/bode_est.eps} & \includegraphics[scale = 0.4]{images/ort_est.eps} & \includegraphics[scale = 0.5]{images/spr_est.eps} \\ 
 \end{tabular} 
+
+\section{Stationärer Fehler}
+Der stationäre Fehler ist die Differenz zwischen Führungsgrüsse w(t) und Regelgrösse y(t) zum Zeitpunkt $t = \infty$:
+\[
+	e(\infty) = w(\infty) - y(\infty)
+\]
+~\\
+Diese Grösse kann über den Laplace Endwertsatz berechnet werden:
+\[
+	 e(\infty) = \lim\limits_{s \rightarrow 0} s \cdot E(s) =  \lim\limits_{s \rightarrow 0} s \cdot \left(W(s) - Y(s)\right)
+\]
+
+\newpage
+
+\section{Reglerelemente}
+\subsection{Übersicht}
+\begin{landscape}\centering
+\begin{footnotesize}
+\begin{longtable}{|c|c|c|c|c|c|}
+\hline Name & $h(t)$ & $G(s)$ & Bode & Ortsk. & PN-Plan \\ 
+\hline\endhead $P$ & 
+	\begin{tikzpicture}[scale=.25]
+		\draw[->] (-0.2,0) -- (5,0);
+		\draw[->] (0,-0.2) -- (0,2.2);
+		\draw[thick, red] (-0.2,0) -- (0,0) -- (0,2) -- (5,2);
+	\end{tikzpicture} & $ K_P $ & 
+	\begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$|g|$};
+        \draw[thick, red] (0,0.5) -- (5,0.5);
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+        \draw[thick, red] (0,0) -- (5,0);
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=0.3]
+         \draw[->] (-2,0) -- (2,0) node[below] {$Re$};
+         \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+         \node[above] at (1.5,0) {$K_P$};
+         \draw[red] (.3,0.2) -- (.7,-0.2);
+         \draw[red] (.3,-0.2) -- (.7,0.2);
+     \end{tikzpicture} & $\nexists$ \\ 
+\hline $PT_1$ & 
+    \begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0) to[out=45, in=180] (5,2);
+        \draw[-] (-0.2,2) -- (0.2,2);
+    \end{tikzpicture} & $\frac{K_P}{1+sT_1}$ & 
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$|g|$};
+        \draw[thick, red] (0,0.5) -- (2.5,0.5) -- (5,-2);
+    \end{tikzpicture} 
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+        \draw[thick, red] (0,0) -- (1.5,0) -- (3.5,-1) -- (5,-1);
+        \draw[-] (-0.2,-1) node[left] {\scriptsize$-90^\circ$} -- (0.2,-1);
+    \end{tikzpicture}& 
+    \begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (1.5,0) to[out=-90, in=0] (0.75,-0.75) to[out=180,in=-90] (0,0);
+        \node[above] at (1.5,0){$K_P$};
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[red] (-1.3,0.2) -- (-1.7,-0.2);
+        \draw[red] (-1.3,-0.2) -- (-1.7,0.2);
+        \node[above] at (-1.5,0) {\scriptsize$-\frac{1}{T_1}$};
+    \end{tikzpicture} \\ 
+\hline $PT_2$ & 
+    \begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0) to[out=45, in=180] (1,2) to[out=0, in=180] (2,0.5) to[out=0, in=180] (3,1.25) to[out=0, in=180] (4,0.875) to[out=0, in=180] (5,1);
+        \draw[-] (-0.2,2) -- (0.2,2);
+    \end{tikzpicture} & $\frac{K_P \cdot \omega^2}{{\omega_0}^2 + 2d\omega_0\cdot s + s^2}$ & 
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$|g|$};
+        \draw[thick, red] (0,0.5) -- (2,0.5) to[out=0 in=180] (2.5,0.75) to[out=0, in=135] (3.25,0) -- (5,-2);
+    \end{tikzpicture} 
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+        \draw[thick, red] (0,0) -- (1.5,0) -- (3.5,-1) -- (5,-1);
+        \draw[-] (-0.2,-1) node[left] {\scriptsize$-90^\circ$} -- (0.2,-1);
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (1.5,0) to[out=-90, in=0] (0.25,-1) to[out=180,in=-90] (-.75,-.5) to[out=90, in=180] (0,0);
+        \node[above] at (1.5,0){$K_P$};
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[dotted] (0,0) circle (1);
+        \draw[red] (-.5,.5) -- (-.9,.9);
+        \draw[red] (-.5,.9) -- (-.9,.5);
+        \draw[red] (-.5,-.5) -- (-.9,-.9);
+        \draw[red] (-.5,-.9) -- (-.9,-.5);
+    \end{tikzpicture} \\ 
+\hline $PT_t$ & 
+	\begin{tikzpicture}[scale=.25]
+		\draw[->] (-0.2,0) -- (5,0);
+		\draw[->] (0,-0.2) -- (0,2.2);
+		\draw[thick, red] (-0.2,0) -- (1,0) -- (1,2) -- (5,2);
+	\end{tikzpicture} & $K_P \cdot \e^{-sT_t}$ & 
+	\begin{tikzpicture}[scale=.2]
+	     \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	     \draw[->] (0,-2) -- (0,1.2) node[above right] {$|g|$};
+	     \draw[thick, red] (0,0.5) -- (5,0.5);
+	 \end{tikzpicture}
+	 \begin{tikzpicture}[scale=.2]
+	     \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	     \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+	     \draw[thick, red] (0,0) -- (1,0) to[out=0, in=115] (5,-2);
+	 \end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[below right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (1.5,0) node[above right] {$K_P$} to[out=-90, in=0] (0,-1.5) to[out=180,in=-90] (-1.5,0) to[out=90, in=180] (0,1.5) to[out=0, in=90] (1.5,0);
+    \end{tikzpicture} & $\nexists$ \\ 
+\hline $D$ & 
+    \begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0);
+        \draw[->, thick, red] (0,0) -- (0,1.5);
+    \end{tikzpicture} & $K_D \cdot s$ & 
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+        \draw[thick, red] (0,-1) -- (5,1);
+    \end{tikzpicture}
+    \begin{tikzpicture}[scale=.2]
+        \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+        \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+        \draw[thick, red] (0,1) -- (5,1);
+        \node[left] at (0,1) {\scriptsize$90^\circ$};
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (0,0) -- (0,1.5);
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[red] (0,0) circle (5pt);
+    \end{tikzpicture} \\ 
+\hline $DT_1$ & 
+	\begin{tikzpicture}[scale=.25]
+	  \draw[->] (-0.2,0) -- (5,0);
+	  \draw[->] (0,-0.2) -- (0,2.2);
+	  \draw[thick, red] (0,1.5) to[out=-45, in=180] (5,0);
+	\end{tikzpicture} & $\frac{K_D \cdot s}{1+ sT_1}$ & 
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,-1) -- (2.5,1) -- (5,1);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+		\draw[thick, red] (0,1) -- (2,1) -- (3,0) -- (5,0);
+		\node[left] at (0,1) {\scriptsize$90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+	   \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+	   \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+	   \draw[->, thick, red] (0,0) to[out=90, in=180] (0.75,0.75) to[out=0, in=90] (1.5,0);
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (0,0) circle (5pt);
+		\draw[red] (-1.3,0.2) -- (-1.7,-0.2);
+		\draw[red] (-1.3,-0.2) -- (-1.7,0.2);
+		\node[above] at (-1.5,0) {\scriptsize$-\frac{1}{T_1}$};
+	\end{tikzpicture} \\ 
+\hline $PD$ & 
+    \begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0);
+        \draw[->, thick, red] (0,0) -- (0,1.5);
+        \draw[thick, red] (0,1) -- (5,1);
+    \end{tikzpicture} & $K_p \cdot (1+sT_V)$ & 
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,1) -- (2.5,1) -- (5,2);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+		\draw[thick, red] (0,0) -- (2,0) -- (3,1) -- (5,1);
+		\node[left] at (0,1) {\scriptsize$90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[->, thick, red] (1,0) -- (1,1.5);
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (-1.5,0) circle (5pt);
+		\node[above] at (-1.5,0) {\scriptsize$-\frac{1}{T_1}$};
+	\end{tikzpicture} \\ 
+\hline $PDT_1$ & 
+    \begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (0,2) to[out=-30, in=180] (5,1);
+    \end{tikzpicture} & $K_p \cdot \frac{1+T_V}{1+sT_1}$ , $T_V > T_1$ & 
+   	\begin{tikzpicture}[scale=.2]
+   		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+   		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+   		\draw[thick, red] (0,-1) -- (2,-1) -- (3,0) -- (5,0);
+   	\end{tikzpicture}
+   	\begin{tikzpicture}[scale=.2]
+   		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+   		\draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+   		\draw[thick, red] (0,0) -- (1.5,0) -- (2.5,1) -- (3.5,0) -- (5,0);
+   		\node[left] at (0,1) {\scriptsize$90^\circ$};
+   	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[->, thick, red] (.5,0) to[out=90, in=180] (1.25,.75) to[out=0, in=90] (2,0);
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (-1,0) circle (5pt);
+		\node[below] at (-1,0) {\scriptsize$-\frac{1}{T_V}$};
+		\draw[red] (-2.2,0.2) -- (-1.8,-0.2);
+		\draw[red] (-2.2,-0.2) -- (-1.8,0.2);
+		\node[above] at (-2,0) {\scriptsize$-\frac{1}{T_1}$};
+	\end{tikzpicture} \\ 
+\hline $PPT_1$ & 
+    \begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (.5,2) to[out=30, in=180] (5,1);
+    \end{tikzpicture} & $K_p \cdot \frac{1+T_V}{1+sT_1}$ , $T_V < T_1$ & 
+   	\begin{tikzpicture}[scale=.2]
+   		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+   		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+   		\draw[thick, red] (0,0) -- (2,0) -- (3,-1) -- (5,-1);
+   	\end{tikzpicture}
+   	\begin{tikzpicture}[scale=.2]
+   		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+   		\draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+   		\draw[thick, red] (0,0) -- (1.5,0) -- (2.5,-1) -- (3.5,0) -- (5,0);
+   		\node[left] at (0,1) {\scriptsize$90^\circ$};
+   	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[->, thick, red] (.5,0) to[out=-90, in=180] (1.25,-.75) to[out=0, in=-90] (2,0);
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (-2,0) circle (5pt);
+		\node[above] at (-2,0) {\scriptsize$-\frac{1}{T_V}$};
+		\draw[red] (-1.2,0.2) -- (-.8,-0.2);
+		\draw[red] (-1.2,-0.2) -- (-.8,0.2);
+		\node[below] at (-1,0) {\scriptsize$-\frac{1}{T_1}$};
+	\end{tikzpicture} \\ 
+\hline $I$ & 
+	\begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0) -- (5,2);
+    \end{tikzpicture} & $K_I \cdot \frac{1}{s}$ & \begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,1) -- (5,-1);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+	    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	    \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+	    \draw[thick, red] (0,-1) -- (5,-1);
+	    \node[left] at (0,-1) {\scriptsize$-90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (0,-1.5) -- (0,0);
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (.2,0.2) -- (-.2,-0.2);
+		\draw[red] (.2,-0.2) -- (-.2,0.2);
+	\end{tikzpicture} \\ 
+\hline $IT_1$ & 
+	\begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0) to[out=0, in=-150] (5,1.5);
+    \end{tikzpicture} & $\frac{K_I}{s \cdot (1+sT_1)}$ & 
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,2) -- (3,1) -- (5,-1);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+	    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	    \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+	    \draw[thick, red] (0,-1) -- (2.5,-1) -- (3.5,-2) -- (5,-2);
+	    \node[left] at (0,-1) {\scriptsize$-90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (-1,-2) to[out=90, in=180] (0,0);
+    \end{tikzpicture} & 
+    \begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (.2,0.2) -- (-.2,-0.2);
+		\draw[red] (.2,-0.2) -- (-.2,0.2);
+		\draw[red] (-1.3,0.2) -- (-1.7,-0.2);
+		\draw[red] (-1.3,-0.2) -- (-1.7,0.2);
+		\node[above] at (-1.5,0) {\scriptsize$-\frac{1}{T_1}$};
+	\end{tikzpicture} \\ 
+\hline $PI$ & 
+	\begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (-0.2,0) -- (0,0) -- (0,1) -- (5,2);
+    \end{tikzpicture} & $K_P \cdot \left( 1 + \frac{1}{sT_N} \right)$ & 
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,2) -- (2.5,1) -- (5,1);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+	    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	    \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+	    \draw[thick, red] (0,-1) -- (2,-1) -- (3,0) -- (5,0);
+	    \node[left] at (0,-1) {\scriptsize$-90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+        \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+        \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+        \draw[->, thick, red] (1,-2) -- (1,0);
+    \end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (.2,0.2) -- (-.2,-0.2);
+		\draw[red] (.2,-0.2) -- (-.2,0.2);
+		\draw[red] (-1.5,0) circle (5pt);
+		\node[above] at (-1.5,0) {\scriptsize$-\frac{1}{T_1}$};
+	\end{tikzpicture} \\ 
+\hline $PID$ & 
+	\begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (0,2) -- (0,1) -- (5,2);
+    \end{tikzpicture} & $K_P \cdot \left( 1 + \frac{1}{sT_N} +sT_V \right)$ & 
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,2) -- (2,1) -- (3,1) -- (5,2);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+	    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	    \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+	    \draw[thick, red] (0,-1) -- (1.5,-1) -- (3.5,1) -- (5,1);
+	    \node[left] at (0,-1) {\scriptsize$-90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[->, thick, red] (1,-2) -- (1,2);
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (.2,0.2) -- (-.2,-0.2);
+		\draw[red] (.2,-0.2) -- (-.2,0.2);
+		\draw[red] (-1.5,0) circle (5pt);
+		\draw[red] (-.75,0) circle (5pt);
+	\end{tikzpicture} \\ 
+\hline $PIDT_1$ & 
+	\begin{tikzpicture}[scale=.25]
+        \draw[->] (-0.2,0) -- (5,0);
+        \draw[->] (0,-0.2) -- (0,2.2);
+        \draw[thick, red] (0,2) to[out=-60, in=150] (0.75,1) to[out=-30, in=190] (2.5,1)-- (5,1.5);
+    \end{tikzpicture} & $K_P \cdot \left( 1 + \frac{1}{sT_N} + \frac{sT_V}{1+sT_1} \right)$ & 
+	\begin{tikzpicture}[scale=.2]
+		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
+		\draw[thick, red] (0,2) -- (1,1) -- (2,1) -- (3,1.5) -- (5,1.5);
+	\end{tikzpicture}
+	\begin{tikzpicture}[scale=.2]
+	    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
+	    \draw[->] (0,-2) -- (0,1.2) node[above right] {$\varphi$};
+	    \draw[thick, red] (0,-1) -- (.5,-1) -- (2.5,1) -- (3.5,0) -- (5,0);
+	    \node[left] at (0,-1) {\scriptsize$-90^\circ$};
+	    \node[left] at (0,1) {\scriptsize$90^\circ$};
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[->, thick, red] (.5,-2) -- (.5,0) to[out=90, in=180] (1.25,0.75) to[out=0, in=90] (2,0);
+	\end{tikzpicture} & 
+	\begin{tikzpicture}[scale=.3]
+		\draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+		\draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+		\draw[red] (.2,0.2) -- (-.2,-0.2);
+		\draw[red] (.2,-0.2) -- (-.2,0.2);
+		\draw[red] (-1.5,0) circle (5pt);
+		\draw[red] (-.75,0) circle (5pt);
+		\draw[red] (-2.2,0.2) -- (-1.8,-0.2);
+		\draw[red] (-2.2,-0.2) -- (-1.8,0.2);
+	\end{tikzpicture} \\ 
+\hline 
+\end{longtable} 
+\end{footnotesize}
+\end{landscape}
+\clearpage
+
+\subsection{$P$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_P \cdot w(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PT_1$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: &  $T_1 \cdot \dot{y}(t) + y(t) = K_p \cdot u(t)$\\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PT_2$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $\ddot{y}(t) + 2d\omega\cdot \dot{y}(t)+y=K_p \cdot u(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PT_t$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_p \cdot u(t-T_t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$D$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_D \cdot \dot{u}(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$DT_1$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \cdot \dot{y}(t) + y(t) = K_D \cdot \dot{u}(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PD$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_p \cdot \left(T_V \cdot \dot{u}(t) + u(t)\right)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PDT_1$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \dot{y}(t) + y(t) = K_p \cdot \left( T_V \cdot \dot{u}(t) + u(t)\right)$ , $T_V > T_1$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} \\
+\subsection{$PPT_1$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \dot{y}(t) + y(t) = K_p \cdot \left( T_V \cdot \dot{u}(t) + u(t)\right)$ , $T_V < T_1$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$I$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $\dot{y} = K_I u(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$IT_1$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \cdot \ddot{y}(t) + \dot{y}(t) = K_I \cdot u(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PI$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_P \cdot \left( u(t) + \frac{1}{T_N}\int u(t) \di t\right)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PID$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: &  $y(t) = K_P \cdot \left( u(t) + \frac{1}{T_N}\int u(t) \di t + T_V \cdot \dot{u}(t) \right)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular} 
+\subsection{$PIDT_1$-Glied}
+\begin{tabular}{ll}
+\rule[-2ex]{0pt}{5.5ex} DGL: & \scriptsize$T_1 \cdot \dot{y}(t) +y(t) = K_P \cdot \left( \frac{T_1 + T_N}{T_N} u(t) + \frac{1}{T_N}\int u(t) \di t + (T_1 + T_V) \cdot \dot{u}(t) \right)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\end{tabular}
