@@ -293,7 +293,7 @@ Diese Grösse kann über den Laplace Endwertsatz berechnet werden:
         \draw[->] (0,-0.2) -- (0,2.2);
         \draw[thick, red] (-0.2,0) -- (0,0) to[out=45, in=180] (1,2) to[out=0, in=180] (2,0.5) to[out=0, in=180] (3,1.25) to[out=0, in=180] (4,0.875) to[out=0, in=180] (5,1);
         \draw[-] (-0.2,2) -- (0.2,2);
-    \end{tikzpicture} & $\frac{K_P \cdot \omega^2}{{\omega_0}^2 + 2d\omega_0\cdot s + s^2}$ & 
+    \end{tikzpicture} & $\frac{K_P \cdot {\omega_0}^2}{{\omega_0}^2 + 2d\omega_0\cdot s + s^2}$ & 
     \begin{tikzpicture}[scale=.2]
         \draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
         \draw[->] (0,-2) -- (0,1.2) node[above right] {$|g|$};
@@ -406,7 +406,7 @@ Diese Grösse kann über den Laplace Endwertsatz berechnet werden:
         \draw[thick, red] (-0.2,0) -- (0,0);
         \draw[->, thick, red] (0,0) -- (0,1.5);
         \draw[thick, red] (0,1) -- (5,1);
-    \end{tikzpicture} & $K_p \cdot (1+sT_V)$ & 
+    \end{tikzpicture} & $K_P \cdot (1+sT_V)$ & 
 	\begin{tikzpicture}[scale=.2]
 		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
 		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
@@ -434,7 +434,7 @@ Diese Grösse kann über den Laplace Endwertsatz berechnet werden:
         \draw[->] (-0.2,0) -- (5,0);
         \draw[->] (0,-0.2) -- (0,2.2);
         \draw[thick, red] (0,2) to[out=-30, in=180] (5,1);
-    \end{tikzpicture} & $K_p \cdot \frac{1+T_V}{1+sT_1}$ , $T_V > T_1$ & 
+    \end{tikzpicture} & $K_P \cdot \frac{1+T_V}{1+sT_1}$ , $T_V > T_1$ & 
    	\begin{tikzpicture}[scale=.2]
    		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
    		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
@@ -465,7 +465,7 @@ Diese Grösse kann über den Laplace Endwertsatz berechnet werden:
         \draw[->] (-0.2,0) -- (5,0);
         \draw[->] (0,-0.2) -- (0,2.2);
         \draw[thick, red] (.5,2) to[out=30, in=180] (5,1);
-    \end{tikzpicture} & $K_p \cdot \frac{1+T_V}{1+sT_1}$ , $T_V < T_1$ & 
+    \end{tikzpicture} & $K_P \cdot \frac{1+T_V}{1+sT_1}$ , $T_V < T_1$ & 
    	\begin{tikzpicture}[scale=.2]
    		\draw[->] (-0.2,0) -- (5.2,0) node[above right] {$\omega$};
    		\draw[->] (0,-2) -- (0,2.2) node[above right] {$|g|$};
@@ -654,51 +654,501 @@ Diese Grösse kann über den Laplace Endwertsatz berechnet werden:
 \rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
 \end{tabular} 
+~\\\\
+\begin{tikzpicture}[scale=1]
+	\draw[->] (-0.2,0) -- (5,0);
+	\draw[->] (0,-0.2) -- (0,2.2);
+	\draw[thick, red] (-0.2,0) -- (0,0) -- (0,1.8) -- (5,1.8);
+	\node[left] at (0,1.8) {\small$K_P$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};
+    \draw[thick, red] (0,0.5) -- (4.9,0.5);
+    \node[above,red] at (2.5,0.5) {$\lg{K_P}$};
+    \draw[thick, blue] (0,0) -- (4.9,0);
+    \node[below,blue] at(2.5,0) {$\varphi$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+     \draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+     \draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+     \node[above right] at (.5,0) {\small$K_P$};
+     \draw[red] (.3,0.2) -- (.7,-0.2);
+     \draw[red] (.3,-0.2) -- (.7,0.2);
+ \end{tikzpicture} & $\nexists$ \\ 
+\end{tabular} 
+\clearpage
+
 \subsection{$PT_1$-Glied}
 \begin{tabular}{ll}
-\rule[-2ex]{0pt}{5.5ex} DGL: &  $T_1 \cdot \dot{y}(t) + y(t) = K_p \cdot u(t)$\\ 
-\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} DGL: &  $T_1 \cdot \dot{y}(t) + y(t) = K_P \cdot u(t)$\\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = \frac{K_P}{1+sT_1}$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P \cdot \left( 1 - \e^{-\frac{t}{T_1}} \right)$ \\ 
 \end{tabular} 
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[dotted] (0.1,2) -- (5,2);
+    \draw[-] (0.1,2) -- (-0.1,2) node[left] {\small$K_P$};
+    \draw[thick, red] (-0.2,0) -- (0,0) to[out=45, in=180] (5,2);
+    \draw[dotted] (0,0) -- (2,2);
+    \draw[dotted] (2,2) -- (2,1.4);
+    \draw[<->] (2,0) -- (2,1.4);
+    \draw[-] (2,.1) -- (2,-.1) node[below] {\small$T_1$};
+    \node[right] at (2,.7) {\scriptsize$0.63\cdot K_P$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};
+    \draw[thick, red] (0,1.1) to[out=0, in=135] (3.5,0.25) -- (4.9,-1.15);
+    \draw[dotted] (0,1.1) -- (2.65,1.1) -- (4.9,-1.15);
+    \draw[->] (1,0) -- (1,1.1);
+    \node[left] at (1,0.5) {\scriptsize$\lg K_P$};
+    \node[above right] at (3.5,.25) {\scriptsize$-20\frac{dB}{Dek}$};
+    \draw[thick, blue] (0,0) to[out=0, in=135] (2.65,-.75) to[out=-45, in=180] (4.9,-1.5);
+    \draw[dotted] (1.65,0) -- (3.65,-1.5) -- (4.9,-1.5);
+    \draw[dotted] (2.65,1.1) node[above] {\scriptsize$\frac{1}{T_1}$} -- (2.65,-.75) -- (4.9,-.75);
+    \draw[-] (4.9,-.75) -- (5,-.75) node[right] {\small$-45^\circ$};
+    \draw[-] (4.9,-1.5) -- (5,-1.5) node[right] {\small$-90^\circ$};
+    \draw[-] (1.65,.1) -- (1.65,0) node[below] {\scriptsize$0.1$};
+    \draw[-] (2.65,.1) -- (2.65,0) node[below] {\scriptsize$1$};
+    \draw[-] (3.65,.1) -- (3.65,0) node[below] {\scriptsize$10$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, red] (1.5,0) to[out=-90, in=0] (.75,-.75);
+	\draw[->, red] (.75,-.75) to[out=180, in=-90] (0,0);
+	\draw[-] (.75,.1) node[above] {\scriptsize$K_P/2$} -- (.75,-.1);
+	\draw[-] (-.1,-.75) node[left] {\scriptsize$K_P/2$} -- (.1,-.75);
+	\draw[dotted] (.1,-.75) -- (.75,-.75) -- (.75,-.1);
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[-, red] (-.9,.1) -- (-1.1,-.1);
+	\draw[-, red] (-.9,-.1) -- (-1.1,.1);
+	\node[above] at (-1,0) {\small$-\frac{1}{T_1}$};
+\end{tikzpicture} \\ 
+\end{tabular} 
+\clearpage
+
 \subsection{$PT_2$-Glied}
 \begin{tabular}{ll}
-\rule[-2ex]{0pt}{5.5ex} DGL: & $\ddot{y}(t) + 2d\omega\cdot \dot{y}(t)+y=K_p \cdot u(t)$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} DGL: & $\ddot{y}(t) + 2d\omega\cdot \dot{y}(t)+y=K_P \cdot u(t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = \frac{K_P \cdot {\omega_0}^2}{{\omega_0}^2 + 2d\omega_0\cdot s + s^2}$ \\  
 \end{tabular} 
+
+\subsubsection{$D>1$ Kriechfall}
+Sprungantwort: \qquad $h(t) = K_P \cdot \left( 1- \frac{T_1}{T_1-T_2} \cdot \e^{-\frac{t}{T_1}} + \frac{T_2}{T_1-T_2} \cdot \e^{-\frac{t}{T_2}} \right)$
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[dotted] (0.1,2) -- (5,2);
+    \draw[-] (0.1,2) -- (-0.1,2) node[left] {\small$K_P$};
+    \draw[thick, red] (-0.2,0) -- (0,0) to[out=0, in=185] (5,2);
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};
+    \draw[thick, red] (0,1.1) -- (1,1.1) to[out=0, in=150] (2.5,.5) -- (3.25,0) to[out=-30, in=120] (3.75,-.5) -- (4.3,-1.5);
+    \draw[dotted] (0,1.1) -- (1.65,1.1) node[above] {\scriptsize$\frac{1}{T_1}$} -- (3.7,-.3) node[right] {\scriptsize$\frac{1}{T_2}$} -- (4.3,-1.5);
+    \draw[->] (1,0) -- (1,1.1);
+    \node[left] at (1,0.5) {\scriptsize$\lg K_P$};
+    \node[above right] at (2.5,.25) {\scriptsize$-20\frac{dB}{Dek}$};
+    \node[right] at (4,-1) {\scriptsize$-40\frac{dB}{Dek}$};
+    \draw[thick, blue] (0,0) to[out=0, in=180] (4.9,-1.5);
+    \draw[dotted] (.65,0) -- (4,-1.5) -- (4.9,-1.5);
+    \draw[-] (4.9,-.75) -- (5,-.75) node[right] {\small$-90^\circ$};
+    \draw[-] (4.9,-1.5) -- (5,-1.5) node[right] {\small$-180^\circ$};
+    \draw[-] (.65,.1) -- (.65,0) node[below] {\scriptsize$0.1$};
+    \draw[-] (1.65,.1) -- (1.65,0) node[below] {\scriptsize$1$};
+    \draw[-] (2.65,.1) -- (2.65,0) node[below] {\scriptsize$10$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, red] (1,0) to[out=-90, in=-30] (0,-.75) to[out=150, in=180] (0,0);
+	\node[above] at (1,0) {\small$K_P$};
+	\draw[-] (-.1,-.75) node[below left] {\scriptsize$-\frac{K_P}{2d}$} -- (.1,-.75) node[below right] {\scriptsize$\omega = \omega_0$};
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[-, red] (-.4,.1) -- (-.6,-.1);
+	\draw[-, red] (-.4,-.1) -- (-.6,.1);
+	\node[above] at (-.5,0) {\small$-\frac{1}{T_1}$};
+	\draw[-, red] (-1.4,.1) -- (-1.6,-.1);
+	\draw[-, red] (-1.4,-.1) -- (-1.6,.1);
+	\node[above] at (-1.5,0) {\small$-\frac{1}{T_2}$};
+\end{tikzpicture} \\ 
+\end{tabular} 
+\clearpage
+
+\subsubsection{$D=1$ aperiodischer Grenzfall}
+Sprungantwort: \qquad $h(t) = K_P \cdot \left( 1- \cdot \e^{-\frac{t}{T_1}} - \frac{t}{T_1} \cdot \e^{-\frac{t}{T_1}} \right)$
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[dotted] (0.1,2) -- (5,2);
+    \draw[-] (0.1,2) -- (-0.1,2) node[left] {\small$K_P$};
+    \draw[thick, red] (-0.2,0) -- (0,0) to[out=0, in=185] (3,2) -- (5,2);
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};
+    \draw[thick, red] (0,1.1) to[out=0, in=135] (3.5,0.25) -- (4.9,-1.15);
+    \draw[dotted] (0,1.1) -- (2.65,1.1) -- (4.9,-1.15);
+    \draw[->] (1,0) -- (1,1.1);
+    \node[left] at (1,0.5) {\scriptsize$\lg K_P$};
+    \draw[<->] (2.65,1.1) node[below right] {\scriptsize$-6dB$} -- (2.65,.85);
+    \node[above right] at (3.5,.25) {\scriptsize$-40\frac{dB}{Dek}$};
+    \draw[thick, blue] (0,0) to[out=0, in=135] (2.65,-.75) to[out=-45, in=180] (4.9,-1.5);
+    \draw[dotted] (1.65,0) -- (3.65,-1.5) -- (4.9,-1.5);
+    \draw[dotted] (2.65,1.1) node[above] {\scriptsize$\frac{1}{T_1}$} -- (2.65,-.75) -- (4.9,-.75);
+    \draw[-] (4.9,-.75) -- (5,-.75) node[right] {\small$-90^\circ$};
+    \draw[-] (4.9,-1.5) -- (5,-1.5) node[right] {\small$-180^\circ$};
+    \draw[-] (1.65,.1) -- (1.65,0) node[below] {\scriptsize$0.1\omega_0$};
+    \draw[-] (2.65,.1) -- (2.65,0) node[below] {\scriptsize$\omega_0$};
+    \draw[-] (3.65,.1) -- (3.65,0) node[below] {\scriptsize$10\omega_0$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, red] (1,0) to[out=-90, in=-30] (0,-.75) to[out=150, in=180] (0,0);
+	\node[above] at (1,0) {\small$K_P$};
+	\draw[-] (-.1,-.75) node[below left] {\scriptsize$-\frac{K_P}{2}$} -- (.1,-.75) node[below right] {\scriptsize$\omega = \omega_0$};
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[-, red] (-1.05,.1) -- (-.85,-.1);
+	\draw[-, red] (-1.05,-.1) -- (-.85,.1);
+	\draw[-, red] (-1.15,.1) -- (-.95,-.1);
+	\draw[-, red] (-1.15,-.1) -- (-.95,.1);
+	\node[above] at (-1,0) {\small$-\frac{1}{T_1}$};
+\end{tikzpicture} \\ 
+\end{tabular} 
+\clearpage
+
+
+\subsubsection{$0<D<1$ stabiler Schwingfall}
+Sprungantwort: \qquad $h(t) = K_P \cdot \left( 1- \frac{\e^{-d\omega_0t}}{\sqrt{1-d^2}} \cdot \sin\left(\omega_et + \arccos d \right) \right)$\\
+Eigenkreisfrequenz: $\ \omega_e=\sqrt{1-d^2}\cdot \omega_0$\\
+Peridoendauer: \qquad $T_P = \frac{2\pi}{\omega_e}$
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[dotted] (0.1,1.5) -- (5,1.5);
+    \draw[-] (0.1,1.5) -- (-0.1,1.5) node[left] {\small$K_P$};
+    \draw[domain=0:5,variable=\t,thick,red] plot[samples=500] ({\t},{1.5 * (1-exp(-0.2*7.255*\t)/sqrt(1-0.2^2)*sin(deg(sqrt(1-0.2^2)*7.255*\t+1.37))});   
+    \draw[dotted] (.7,1.5) -- (.7,2.2);
+    \draw[dotted] (1.6,1.5) -- (1.6,2.2);
+    \draw[<->] (.7,2) -- (1.6,2);
+    \node[above] at (1.2,2) {\scriptsize$T_P$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};  
+    \draw[scale=2,domain=0:1.85,variable=\x,thick,red] plot[samples=500] ({\x},{.25-log10(sqrt((1-(10^(\x)/21.13)^2)^2+(2*.2*10^(\x)/21.13)^2))});
+    \draw[dotted] (0,.5) -- (2.65,.5) -- (3.7,-1.6);
+    \draw[<->] (1,0) -- (1,.5);
+    \node[left] at (1,.25) {\scriptsize$\lg K_P$};
+    \node[above right] at (3.5,.25) {\scriptsize$-40\frac{dB}{Dek}$};
+    \draw[thick, blue] (0,0) to[out=0, in=110] (2.65,-.75) to[out=-70, in=180] (4.9,-1.5);
+    \draw[dotted] (1.65,0) -- (3.65,-1.5) -- (4.9,-1.5);
+    \draw[dotted] (2.65,.5) -- (2.65,-.75) -- (4.9,-.75);
+    \draw[-] (4.9,-.75) -- (5,-.75) node[right] {\small$-90^\circ$};
+    \draw[-] (4.9,-1.5) -- (5,-1.5) node[right] {\small$-180^\circ$};
+    \draw[-] (1.65,.1) -- (1.65,0) node[below] {\scriptsize$0.1 \omega_0$};
+    \draw[-] (2.65,.1) -- (2.65,0) node[below] {\scriptsize$\omega_0$};
+    \draw[-] (3.65,.1) -- (3.65,0) node[below] {\scriptsize$10 \omega_0$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, red] (1,0) to[out=-90, in=-30] (0,-.75) to[out=150, in=180] (0,0);
+	\node[above] at (1,0) {\small$K_P$};
+	\draw[-] (-.1,-.75) node[below left] {\scriptsize$-\frac{K_P}{2d}$} -- (.1,-.75) node[below right] {\scriptsize$\omega = \omega_0$};
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[thick] (0,0) circle (1.5);
+	\draw[thick, red] (-1.16,1.16) -- (-.96,.96);
+	\draw[thick, red] (-1.16,.96) -- (-.96,1.16);
+	\draw[thick, red] (-1.16,-1.16) -- (-.96,-.96);
+	\draw[thick, red] (-1.16,-.96) -- (-.96,-1.16);
+	\node[above left] at(0,1.5) {\scriptsize$w_0$};
+	\node[above right] at(1.5,0) {\scriptsize$w_0$};
+	\node[below left] at(0,-1.5) {\scriptsize$-w_0$};
+	\node[above left] at(-1.5,0) {\scriptsize$-w_0$};
+	\draw[dotted] (0,1.06) -- (-1.06,1.06) -- (-1.06,-1.06) -- (0,-1.06);
+	\draw[-] (-.1,1.06) -- (.1,1.06) node[right] {\scriptsize$\omega_0\sqrt{1-d^2}$};
+	\draw[-] (-.1,-1.06) -- (.1,-1.06) node[right] {\scriptsize$\omega_0\sqrt{1-d^2}$};
+	\draw[-] (-1.06,.1) -- (-1.06,-.1) node[below] {\scriptsize$-\omega_0d$};
+	\draw[-] (0,0) -- (-1.06,1.06);
+	\draw[-] (-.5,0) to[out=90, in=235] (-.38,.38);
+	\node at (-.26, .1) {\tiny$\alpha$};
+	\node[above right] at (-.1,0) {\tiny$\cos\alpha = d$};
+\end{tikzpicture} \\ 
+\end{tabular} 
+\clearpage
+
+\subsubsection{$D=0$ grenzstabiler Schwingfall}
+Sprungantwort: \qquad $h(t) = K_P \cdot \left( 1- \cos\omega_0t \right)$\\
+Eigenkreisfrequenz: $\ \omega_e=\omega_0$\\
+Peridoendauer: \qquad $T_P = \frac{2\pi}{\omega_0}$
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[dotted] (0.1,1) -- (5,1);
+    \draw[-] (0.1,1) -- (-0.1,1) node[left] {\small$K_P$};
+    \draw[dotted] (0.1,2) -- (5,2);
+    \draw[-] (0.1,2) -- (-0.1,2) node[left] {\small$2K_P$};
+    \draw[domain=0:5,variable=\t,thick,red] plot[samples=500] ({\t},{1 * (1 - cos(deg(6.28*\t))});   
+    \draw[dotted] (.5,2) -- (.5,2.5);
+    \draw[dotted] (1.5,2) -- (1.5,2.5);
+    \draw[<->] (.5,2.3) -- (1.5,2.3);
+    \node[above] at (1.2,2.3) {\scriptsize$T_P$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};  
+    \draw[scale=2,domain=0:1.2,variable=\x,thick,red] plot[samples=500] ({\x},{.25-log10(sqrt((1-(10^(\x)/21.13)^2)^2))});
+    \draw[scale=2,domain=1.405:1.85,variable=\x,thick,red] plot[samples=500] ({\x},{.25-log10(sqrt((1-(10^(\x)/21.13)^2)^2))});
+    \draw[dotted] (0,.5) -- (2.65,.5) -- (3.7,-1.6);
+    \draw[<->] (1,0) -- (1,.5);
+    \node[left] at (1,.25) {\scriptsize$\lg K_P$};
+    \node[above right] at (3.5,.25) {\scriptsize$-40\frac{dB}{Dek}$};
+    \draw[thick, blue] (0,0) -- (5,0);
+    \draw[-] (4.9,-.75) -- (5,-.75) node[right] {\small$-90^\circ$};
+    \draw[-] (4.9,-1.5) -- (5,-1.5) node[right] {\small$-180^\circ$};
+    \draw[-] (1.65,.1) -- (1.65,0) node[below] {\scriptsize$0.1 \omega_0$};
+    \draw[-] (2.65,.1) -- (2.65,0) node[below] {\scriptsize$\omega_0$};
+    \draw[-] (3.65,.1) -- (3.65,0) node[below] {\scriptsize$10 \omega_0$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, thick, red] (1,0) -- (0,0);
+	\node[above] at (1,0) {\small$K_P$};
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[thick] (0,0) circle (1.5);
+	\draw[thick, red] (-.1,1.4) -- (.1,1.6);
+	\draw[thick, red] (-.1,1.6) -- (.1,1.4);
+	\draw[thick, red] (-.1,-1.4) -- (.1,-1.6);
+	\draw[thick, red] (-.1,-1.6) -- (.1,-1.4);
+	\node[above left] at(0,1.5) {\scriptsize$w_0$};
+	\node[above right] at(1.5,0) {\scriptsize$w_0$};
+	\node[below left] at(0,-1.5) {\scriptsize$-w_0$};
+	\node[above left] at(-1.5,0) {\scriptsize$-w_0$};
+\end{tikzpicture} \\ 
+\end{tabular} 
+\clearpage
+
 \subsection{$PT_t$-Glied}
 \begin{tabular}{ll}
-\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_p \cdot u(t-T_t)$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_P \cdot u(t-T_t)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) =K_P \cdot \e^{-sT_t}$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P \cdot \sigma(t-T_t)$ \\
+\end{tabular}
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[dotted] (0.1,1.5) -- (5,1.5);
+    \draw[-] (0.1,1.5) -- (-0.1,1.5) node[left] {\small$K_P$};
+    \draw[thick,red] (-.2,0) -- (2,0) -- (2,1.5) -- (5,1.5);   
+    \draw[dotted] (0,0) -- (0,-.5);
+    \draw[dotted] (2,0) -- (2,-.5);
+    \draw[<->] (0,-.25) -- (2,-.25);
+    \node[below] at (1,-.25) {\scriptsize$T_t$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};  
+	\draw[thick,red] (0,.8) -- (5,.8);
+    \draw[<->] (1,0) -- (1,.8);
+    \node[left] at (1,.4) {\scriptsize$\lg K_P$};
+    \draw[thick, blue] (0,0) -- (1,0) to[out=0, in=115] (4,-1.5);
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, thick, red] (1.5,0) to[out=-90, in=0] (0,-1.5) to[out=180,in=-90] (-1.5,0) to[out=90, in=180] (0,1.5) to[out=0, in=90] (1.5,0);
+	\draw[-] (1.5,.1) -- (1.5,-.1);
+	\node[above left] at (1.5,0) {\small$K_P$};
+\end{tikzpicture} & $\nexists$\\ 
 \end{tabular} 
+\clearpage
+
+ 
 \subsection{$D$-Glied}
 \begin{tabular}{ll}
 \rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_D \cdot \dot{u}(t)$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P \cdot s$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P \cdot \delta(t)$ \\ 
 \end{tabular} 
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[thick,red] (-.2,0) -- (5,0);
+    \draw[->,thick,red] (0,0) -- (0,2) node[left] {\scriptsize$K_P$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};  
+	\draw[thick, red] (0,-1) -- (4.9,1);
+	\draw[-] (2.45,.1) -- (2.45,-.1) node[below] {\scriptsize$\frac{1}{K_P}$};
+	\node[below] at (4,.5) {\scriptsize$20\frac{dB}{Dek}$};
+	\draw[thick, blue] (0,1) -- (4.9,1);
+	\node[right] at (4.9,1) {\scriptsize$90^\circ$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, thick, red] (0,0) -- (0,1.5);
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+    \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+    \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+    \draw[red] (0,0) circle (2.5pt);
+\end{tikzpicture}\\ 
+\end{tabular} 
+\clearpage
+
+
 \subsection{$DT_1$-Glied}
 \begin{tabular}{ll}
 \rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \cdot \dot{y}(t) + y(t) = K_D \cdot \dot{u}(t)$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
-\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = \frac{K_D \cdot s}{1+ sT_1}$ \\ 
+\rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = \frac{K_D}{T_1} \cdot \e^{-\frac{t}{T_1}}$ \\ 
 \end{tabular} 
+~\\\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5,0);
+    \draw[->] (0,-0.2) -- (0,2.2);
+    \draw[thick,red, domain=0:5, variable=\t] plot[samples=500] ({\t},{1.5*exp(-\t/1.5)});
+    \draw[-] (.1,1.5) -- (-.1,1.5) node[left] {\scriptsize$\frac{K_D}{T_1}$};
+    \draw[dotted] (0,1.5) -- (1.5,0) node[below] {\scriptsize$T_1$};
+\end{tikzpicture}
+~\\\\
+Bodediagramm:\\
+\begin{tikzpicture}[scale=1]
+    \draw[->] (-0.2,0) -- (5.2,0) node[above right] {\small$\omega$};
+    \draw[->] (0,-1.5) -- (0,1.2) node[above left] {\small$\lg|G(\im\omega)|$};
+    \draw[->] (4.9,-1.5) -- (4.9,1.2) node[above right] {\small$\varphi(\omega)$};  
+	\draw[thick, red] (0,-1) -- (2,.44) to[out=35, in=180] (3.2,.8) -- (4.9,.8);
+	\draw[dotted] (0,-1) -- (2.5,.8) -- (4.9,.8);
+	\draw[-] (1.4,.1) -- (1.4,-.1) node[below] {\scriptsize$\frac{1}{K_P}$};
+	\draw[->] (4.5,0) -- (4.5,.8);
+	\node[above left] at(4.5,-.1) {\scriptsize$\lg\frac{K_D}{T_1}$};
+	\node[below] at (1,-.6) {\scriptsize$20\frac{dB}{Dek}$};
+	\draw[thick, blue] (0,1) -- (1.25,1) to[out=0, in=180] (3.75,0) -- (5,0);
+	\draw[dotted] (0,1) -- (1.5,1) -- (3.5,0) -- (4.9,0);
+	\draw (4.8,1) -- (5,1) node[right] {\scriptsize$90^\circ$};
+	\draw (4.8,.5) -- (5,.5) node[right] {\scriptsize$45^\circ$};
+	\draw[dotted] (2.5,0) -- (2.5,.8);
+	\draw[dotted] (2.5,.5) -- (4.9,.5);
+	\draw (2.5,.1) -- (2.5,-.1) node[below] {\scriptsize$\frac{1}{T_1}$};
+\end{tikzpicture}
+~\\\\
+\begin{tabular}{ll}
+Ortskurve: & PN-Plan: \\ 
+\begin{tikzpicture}[scale=.75]
+	\draw[->] (-2,0) -- (2,0) node[below] {\small$Re$};
+	\draw[->] (0,-2) -- (0,2) node[above right] {\small$Im$};
+	\draw[->, thick, red] (0,0) to[out=90, in=180] (0.75,0.75) to[out=0, in=90] (1.5,0);
+	\draw (.1,.75) -- (-.1,.75) node[left] {\scriptsize$\frac{K_D}{2T_1}$};
+	\draw (.75,.1) --(.75,-.1) node[below] {\scriptsize$\frac{K_D}{2T_1}$};
+	\draw[dotted] (0,.75) -- (.75,.75) node[above] {\scriptsize$\omega_E=\frac{1}{T_1}$} --(.75,0);
+	\draw (1.5,.1) -- (1.5,-.1) node[below] {\scriptsize$\frac{K_D}{T_1}$};
+\end{tikzpicture} & 
+\begin{tikzpicture}[scale=.75]
+    \draw[->] (-2,0) -- (2,0) node[above right] {$Re$};
+    \draw[->] (0,-2) -- (0,2) node[above right] {$Im$};
+    \draw[red] (0,0) circle (2.5pt);
+    \draw[red] (-1.4,0.1) -- (-1.6,-0.1);
+	\draw[red] (-1.4,-0.1) -- (-1.6,0.1);
+	\node[above] at (-1.5,0) {\scriptsize$-\frac{1}{T_1}$};
+\end{tikzpicture}\\ 
+\end{tabular} 
+\clearpage
+
+
 \subsection{$PD$-Glied}
 \begin{tabular}{ll}
-\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_p \cdot \left(T_V \cdot \dot{u}(t) + u(t)\right)$ \\ 
+\rule[-2ex]{0pt}{5.5ex} DGL: & $y(t) = K_P \cdot \left(T_V \cdot \dot{u}(t) + u(t)\right)$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
 \end{tabular} 
 \subsection{$PDT_1$-Glied}
 \begin{tabular}{ll}
-\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \dot{y}(t) + y(t) = K_p \cdot \left( T_V \cdot \dot{u}(t) + u(t)\right)$ , $T_V > T_1$ \\ 
+\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \dot{y}(t) + y(t) = K_P \cdot \left( T_V \cdot \dot{u}(t) + u(t)\right)$ , $T_V > T_1$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
 \end{tabular} \\
 \subsection{$PPT_1$-Glied}
 \begin{tabular}{ll}
-\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \dot{y}(t) + y(t) = K_p \cdot \left( T_V \cdot \dot{u}(t) + u(t)\right)$ , $T_V < T_1$ \\ 
+\rule[-2ex]{0pt}{5.5ex} DGL: & $T_1 \dot{y}(t) + y(t) = K_P \cdot \left( T_V \cdot \dot{u}(t) + u(t)\right)$ , $T_V < T_1$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Übertragungsfunktion: & $G(s) = K_P$ \\ 
 \rule[-2ex]{0pt}{5.5ex} Sprungantwort: & $h(t) = K_P$ \\ 
 \end{tabular} 
