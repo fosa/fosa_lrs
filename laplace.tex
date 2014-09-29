@@ -72,14 +72,14 @@ Somit ist der Konvergenzbereich:
 \]
 
 \paragraph{Differentiationssatz}
-\[
-	\dot{u}(t) \ \laplace \ s \cdot U(s) - u(0^-)
-\]
-
-\[
-	\dddot{u}(t) \ \laplace \ s^3 \cdot U(s) - s^2 \cdot u(0^-) - s \cdot \dot{u}(0^-) - \ddot{u}(0^-)
-\]
-\\
+\[\begin{aligned}
+	\dot{u}(t) \ &\laplace \ s \cdot U(s) - u(0^-) \\
+	\ddot{u}(t) \ &\laplace \ s^2 \cdot U(s) - s \cdot u(0^-) -  \dot{u}(0^-) \\
+	\dddot{u}(t) \ &\laplace \ s^3 \cdot U(s) - s^2 \cdot u(0^-) - s \cdot \dot{u}(0^-) - \ddot{u}(0^-)\\
+	\\
+	u^{(n)}(t) \ &\laplace \ s^n \cdot U(s) - s^{n-1} \cdot u(0^-) - s^{n-2} \cdot \dot{u}(0^-) - \dots - s \cdot u^{n-2}(0^-) - u^n(0^-)
+\end{aligned}\]
+~\\
 Mit Anfangsbedingung $0^- = 0$:
 \[
 	\difrac{^n}{t^n}u(t) \ \laplace \ s^n \cdot U(s)
