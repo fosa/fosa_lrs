@@ -14,7 +14,7 @@
 # *.ps
 # *.eps
 # *.pdf
-tex/fosalrs_main.pdf
+fosalrs_main.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
