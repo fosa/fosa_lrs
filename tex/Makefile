@@ -3,9 +3,9 @@
 all: build clean
 
 build:
-	pdflatex fosalrs_main.tex
-	pdflatex fosalrs_main.tex
-	pdflatex fosalrs_main.tex
+	pdflatex --shell-escape fosalrs_main.tex
+	pdflatex --shell-escape fosalrs_main.tex
+	pdflatex --shell-escape fosalrs_main.tex
 
 clean:
 	rm -f *.aux
