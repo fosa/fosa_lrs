@@ -16,4 +16,4 @@ clean:
 	rm -f *.toc
 	rm -f *.lot
 	rm -f *.lof
-
+	rm -f w18-test-*.tex
